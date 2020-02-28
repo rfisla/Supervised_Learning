@@ -13,11 +13,12 @@ def plot_svm(log_C, log_gamma, ax=None):
     if ax is None:
         ax = plt.gca()
     plot_2d_separator(svm, X, ax=ax, eps=.5)
-    # plot data
+    # Pintamos los datos
     discrete_scatter(X[:, 0], X[:, 1], y, ax=ax)
-    # plot support vectors
+    # Pintamos los vectores soporte
     sv = svm.support_vectors_
-    # class labels of support vectors are given by the sign of the dual coefficients
+    # Las etiquetas de clase de los vectores soporte vienen dadas por
+    # el signo de los coeficientes duales dual_coef_
     sv_labels = svm.dual_coef_.ravel() > 0
     discrete_scatter(sv[:, 0], sv[:, 1], sv_labels, s=15, markeredgewidth=3, ax=ax)
     ax.set_title("C = %.4f gamma = %.4f" % (C, gamma))
